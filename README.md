@@ -8,6 +8,11 @@ A terraform module to run ansible playbook.
 module "example-ansible-playbook" {
   source  = "tenvecera/ansible/playbook"
   version = "1.0.0"
+
+  playbook_file = "${path.module}/ansible/main.yml"
+  inventory     = {
+    ips = ["127.0.0.1"]
+  }
 }
 ```
 

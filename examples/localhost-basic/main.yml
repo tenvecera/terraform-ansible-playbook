@@ -1,0 +1,10 @@
+---
+
+- hosts: all
+  connection: local
+
+  tasks:
+
+    - name: "Example task"
+      ansible.builtin.debug:
+        msg: "Hello world!"
