@@ -36,3 +36,9 @@ variable "ansible_extra_args" {
   default     = ""
   description = "Extra arguments which will be passed to ansible-playbook command"
 }
+
+variable "force_run" {
+  type        = bool
+  default     = false
+  description = "Flag that force run ansible-playbook"
+}
