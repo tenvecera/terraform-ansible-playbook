@@ -11,7 +11,7 @@ resource "local_file" "inventory" {
 
 resource "null_resource" "run-playbook" {
   triggers = {
-    always_run = "${timestamp()}"
+    run = var.force_run ? "${timestamp()}" : "run_once"
   }
 
   provisioner "local-exec" {
