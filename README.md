@@ -2,6 +2,10 @@
 
 A terraform module to run ansible playbook.
 
+## Prerequisites
+
+- Installed `ansible-core` (alpine linux example: `apk add --no-cache ansible-core`)
+
 ## Usage example
 
 ```terraform
