@@ -44,7 +44,7 @@ resource "terraform_data" "playbook" {
   ], var.triggers)
 
   provisioner "local-exec" {
-    command = <<EOT
+    command = <<-EOT
       export ANSIBLE_FORCE_COLOR=1
       export PYTHONBUFFERED=1
 
@@ -70,7 +70,7 @@ resource "terraform_data" "playbook" {
         ${join(" ", var.playbook_extra_args)} \
         -i ${local.inventory} \
         ${var.playbook_file}
-    EOT
+      EOT
 
     environment = {
       ANSIBLE_COLLECTIONS_PATH     = var.collections_path == "" ? pathexpand("~/.ansible/collections") : var.collections_path
