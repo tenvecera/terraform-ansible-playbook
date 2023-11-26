@@ -24,7 +24,7 @@ variable "galaxy_role_install_args" {
 variable "collection_requirements_file" {
   type        = string
   default     = ""
-  description = "Path to file with collection requirements for playbook"
+  description = "Path to file with collection requirements for playbook."
 }
 
 variable "collections_path" {
