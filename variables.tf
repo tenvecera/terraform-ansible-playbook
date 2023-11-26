@@ -44,25 +44,25 @@ variable "inventory" {
     ips     = optional(list(string))
     content = optional(string)
   })
-  description = "List of target machines IP's or Content of inventory file"
+  description = "List of target machines IP's or Content of inventory file."
 
   validation {
     condition = (
       (lookup(var.inventory, "content", null) != null && lookup(var.inventory, "ips", null) == null) ||
       (lookup(var.inventory, "content", null) == null && lookup(var.inventory, "ips", null) != null)
     )
-    error_message = "Variables inventory.ips and inventory.content are mutually exclusive"
+    error_message = "Variables inventory.ips and inventory.content are mutually exclusive."
   }
 }
 
 variable "playbook_extra_args" {
   type        = list
   default     = []
-  description = "Extra arguments which will be passed to ansible-playbook command"
+  description = "Extra arguments which will be passed to ansible-playbook command."
 }
 
-variable "force_run" {
-  type        = bool
-  default     = false
-  description = "Flag that force run ansible-playbook"
+variable "triggers" {
+  type        = list
+  default     = []
+  description = "User defined triggers for this module."
 }

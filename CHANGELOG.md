@@ -6,6 +6,10 @@ Breaking changes:
 
   - Removed `ansible_extra_args` input (`string`) in favor of
 `playbook_extra_args` (`list`)
+  - Removed `null_resource` instead is used `terraform_data`
+  - Removed `force_run` instead ability to set `triggers` is added
+  - Minimal required version of terraform is now `1.4` because resource
+`terraform_data` was added in this version
 
 Features:
 
@@ -29,8 +33,10 @@ Features:
       - `collections_path` which will set `ANSIBLE_COLLECTIONS_PATH` for
 installing collections
       - `galaxy_collection_install_args` allows to setting the arguments of the
-`ansible-galaxy collection install` command - [doc](https://docs.ansible.com/ansible/latest/cli/ansible-galaxy.html#collection-install)
+`ansible-galaxy collection install` command
+([documentation](https://docs.ansible.com/ansible/latest/cli/ansible-galaxy.html#collection-install))
   - Role has two new variables:
       - `roles_path` which will set `ANSIBLE_ROLES_PATH` for installing roles
       - `galaxy_role_install_args` allows to setting the arguments of the
-`ansible-galaxy role install` command - [doc](https://docs.ansible.com/ansible/latest/cli/ansible-galaxy.html#role-install)
+`ansible-galaxy role install` command
+([documentation](https://docs.ansible.com/ansible/latest/cli/ansible-galaxy.html#role-install))

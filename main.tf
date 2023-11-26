@@ -4,7 +4,7 @@ locals {
     "", concat(
       [
         var.collections_path,
-        var.collection_requirements_file == "" ? "" : filesha1(var.collections_path)
+        var.collection_requirements_file == "" ? "" : filesha1(var.collection_requirements_file)
       ],
       var.galaxy_collection_install_args
     )
@@ -36,13 +36,12 @@ resource "local_file" "inventory" {
   content  = var.inventory.content
 }
 
-resource "null_resource" "run-playbook" {
-  triggers = {
-    run                  = var.force_run ? "${timestamp()}" : "run_once"
-    change_in_collection = local.collection_sha1
-    change_in_role       = local.role_sha1
-    change_in_playbook   = local.playbook_sha1
-  }
+resource "terraform_data" "playbook" {
+  triggers_replace = concat([
+    local.collection_sha1,
+    local.role_sha1,
+    local.playbook_sha1
+  ], var.triggers)
 
   provisioner "local-exec" {
     command = <<EOT
