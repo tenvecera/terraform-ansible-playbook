@@ -10,8 +10,8 @@ A terraform module to run ansible playbook.
 
 ```terraform
 module "example-ansible-playbook" {
-  source  = "tenvecera/ansible/playbook"
-  version = "1.0.0"
+  source  = "tenvecera/playbook/ansible"
+  version = "2.0.0"
 
   playbook_file = "${path.module}/ansible/main.yml"
   inventory     = {
@@ -29,8 +29,8 @@ terraform apply -replace="module.example-ansible-playbook.null_resource.run-play
 Or forced by variable:
 ```terraform
 module "example-ansible-playbook" {
-  source  = "tenvecera/ansible/playbook"
-  version = "1.0.0"
+  source  = "tenvecera/playbook/ansible"
+  version = "2.0.0"
 
   playbook_file = "${path.module}/ansible/main.yml"
   inventory     = {
