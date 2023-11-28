@@ -1,2 +1,4 @@
 .terraform*
 terraform*
+ansible_collections
+ansible_roles
