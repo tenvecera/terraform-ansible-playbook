@@ -4,8 +4,8 @@ module "ec2-instance_example_complete" {
 }
 
 module "ansible-playbook" {
-  source  = "tenvecera/ansible/playbook"
-  version = "1.0.0"
+  source  = "tenvecera/playbook/ansible"
+  version = "2.0.0"
 
   playbook_file = "${path.module}/main.yml"
   inventory = {
