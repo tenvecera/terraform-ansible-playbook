@@ -24,7 +24,7 @@ module "example-ansible-playbook" {
 
 Module itself checks changes in collection, role and playbook variables also
 with content of requirements files and playbook file. But in case, that isn't
-enaugh is `triggers` provided too:
+enough is `triggers` provided too:
 
 ```bash
 module "example-ansible-playbook" {
@@ -32,7 +32,8 @@ module "example-ansible-playbook" {
   version = "2.0.0"
 
   triggers {
-    # When any file with extension .yml will be changed in ansible except folder collections
+    # When any file with extension .yml will be changed in ansible directory
+except collections folder
     sha1(join("", [for file in fileset("${path.module}/ansible", "**/*.yml") : filesha1("${path.module}/ansible/${file}") if !startswith(file, "collections/")]))
   }
 

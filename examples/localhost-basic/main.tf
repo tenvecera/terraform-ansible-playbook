@@ -7,7 +7,8 @@ module "ansible-playbook" {
   version = "2.0.0"
 
   triggers = [
-    # When any file with extension .yml will be changed in ansible except folder collections
+    # When any file with extension .yml will be changed in ansible directory
+except collections folder
     sha1(join("", [for file in fileset(local.ansible_path, "**/*.yml") : filesha1("${local.ansible_path}/${file}") if !startswith(file, "collections/")]))
   ]
 
